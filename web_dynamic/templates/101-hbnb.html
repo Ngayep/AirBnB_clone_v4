@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4-hbnb</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts/101-hbnb.js') }}?cache_id={{ cache_id }}"></script>
+    <!-- Add CSS file for header styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/3-header.css') }}">
+</head>
+<body>
+    <!-- Header with API Status Indicator -->
+    <header>
+	    <div id="api_status" class=""></div>
+    </header>
+    <section class="filters">
+    <h3>Filters</h3>
+        <!-- Place for checkboxes -->
+    </section>
+    
+    <ul id="locations">
+            {% for state in states %}
+            <li>
+                <input type="checkbox" data-id="{{ state.id }}" data-name="{{ state.name }}">
+                {{ state.name }}
+                <ul>
+                    {% for city in state.cities %}
+                    <li>
+                        <input type="checkbox" data-id="{{ city.id }}" data-name="{{ city.name }}">
+                        {{ city.name }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    <div class="reviews" style="margin-top: 40px;">
+      <h2> Reviews <span id="review-toggle" style="cursor: pointer;">show</span></h2>
+      <ul id="review-list"></ul>
+    </div>
+    <!-- Section for places (will be populated by JavaScript) -->
+    <section class="places">
+        <!-- Dynamic content will be inserted here -->
+    </section>
+</body>
+</html>
