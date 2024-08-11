@@ -24,7 +24,6 @@ class DBStorage:
     """interaacts with the MySQL database"""
     __engine = None
     __session = None
-pip show mysqlclient
 
     def __init__(self):
         """Instantiate a DBStorage object"""
@@ -70,7 +69,7 @@ pip show mysqlclient
         Base.metadata.create_all(self.__engine)
         sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sess_factory)
-        self.__session = Session
+        self.__session = Session()
 
     def close(self):
         """call remove() method on the private session attribute"""
