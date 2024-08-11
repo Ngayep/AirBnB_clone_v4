@@ -11,12 +11,12 @@ $(document).ready(function() {
     }
 
     // Function to fetch and display places
-    function fetchPlaces() {
+    function fetchPlaces(amenities) {
         $.ajax({
             url: 'http://0.0.0.0:5001/api/v1/places_search/',
             type: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify({}),
+            data: JSON.stringify({ amenities: amenities }),
             success: function(data) {
                 // Clear previous content
                 $('.places').empty();
@@ -35,7 +35,15 @@ $(document).ready(function() {
         });
     }
 
-    // Initial API status check and places fetch
+    // Event handler for the search button
+    $('#search_button').click(function() {
+        let amenities = [];
+        $('input[type="checkbox"]:checked').each(function() {
+            amenities.push($(this).data('id'));
+        });
+        fetchPlaces(amenities);
+    });
+
+    // Initial API status check
     updateApiStatus();
-    fetchPlaces();
 });
