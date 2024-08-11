@@ -2,21 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>3-hbnb</title>
+    <title>4-hbnb</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{ url_for('static', filename='scripts/3-hbnb.js') }}?cache_id={{ cache_id }}"></script>
+    <script src="{{ url_for('static', filename='scripts/4-hbnb.js') }}?cache_id={{ cache_id }}"></script>
     <!-- Add CSS file for header styling -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/3-header.css') }}">
 </head>
 <body>
-	 <!-- Header with API Status Indicator -->
+    <!-- Header with API Status Indicator -->
     <header>
-        <div id="api_status" class=""></div>
+	    <div id="api_status" class=""></div>
     </header>
-
+    <section class="filters">
+    <h3>Filters</h3>
+        <!-- Place for checkboxes -->
+    </section>
+    
     <!-- Section for places (will be populated by JavaScript) -->
     <section class="places">
-        <!-- Articles for places will be added here dynamically -->
+        <!-- Dynamic content will be inserted here -->
     </section>
 </body>
 </html>
