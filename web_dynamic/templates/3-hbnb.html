@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3-hbnb</title>
+    <link rel="stylesheet" href="../static/styles/2-hbnb.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts/3-hbnb.js') }}?cache_id={{ cache_id }}"></script>
+    <!-- Add CSS file for header styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/3-header.css') }}">
+</head>
+<body>
+    <!-- Header with API Status Indicator -->
+    <header>
+        <div class="logo">
+            <h1>AirBnB</h1>
+        </div>
+    </header>
+    <section class="filters">
+        <div class="amenities">
+            <h4>Amenities</h4>
+            <ul>
+                {% for amenity in amenities.values() %}
+                <li>
+                    <input type="checkbox" data-id="{{ amenity.id }}" data-name="{{ amenity.name }}">
+                    {{ amenity.name }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    <section class="places">
+        <!-- Dynamic content will be inserted here -->
+    </section>
+</body>
+</html>
